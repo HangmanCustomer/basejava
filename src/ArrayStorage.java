@@ -21,15 +21,19 @@ public class ArrayStorage {
     }
 
     Resume get(String uuid) {
-//        for(int i = 0; i < storage.length; i++) {
-//            if (storage[i].equals(uuid))
-//        }
-        return storage[0];
+        int i = 0;
+        for (; i <size();i++)
+        if (storage[i].toString().equals(uuid))
+            break;
+        return storage[i];
     }
     void delete(String uuid) {
-//        for(int i = 0; i < storage.length; i++) //?????????????????????????
-//            if (storage[i].equals(uuid))
-//                storage[i] = null;
+        int i = 0;
+        for (; i <size();i++)
+            if (storage[i].toString().equals(uuid)) {
+                for(;i <size();i++ )
+                    storage[i] = storage[i + 1];
+            }
     }
 
     Resume[] getAll() {
