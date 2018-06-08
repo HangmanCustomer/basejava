@@ -6,7 +6,6 @@ import java.util.Arrays;
 public class ArrayStorage {
     private Resume[] storage = new Resume[10000];
     private int size = 0;
-    private int save = 0;
 
     void clear() {
         Arrays.fill(storage, 0, size, null);
@@ -14,14 +13,8 @@ public class ArrayStorage {
     }
 
     void save(Resume r) {
-        if (storage[save] == null) {
-            storage[save] = r;
-        } else {
-            save++;
-            storage[save] = r;
-        }
-            size++;
-        System.out.println(size);
+        storage[size] = r;
+        size++;
     }
 
     Resume get(String uuid) {
