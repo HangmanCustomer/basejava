@@ -8,16 +8,9 @@ public class ArrayStorage {
     private int size = 0;
 
     void update(Resume r) {
-        String oldUuid;
-        String newUuid;
-        for (int i = 0; i < size; i++) {
-            if (storage[i].equals(r)) {
-                oldUuid = storage[i].uuid;
-                storage[i].uuid = "uuidUpdate";
-                newUuid = storage[i].uuid;
-                System.out.println("Резюме " + oldUuid + " изменено на " + newUuid);
-            }
-        }
+        storage[0] = r;
+        System.out.println("Резюме изменено");
+
     }
 
     void clear() {
@@ -28,34 +21,45 @@ public class ArrayStorage {
     void save(Resume r) {
         if (size == storage.length) {
             System.out.println("Массив заполнен");
-            System.exit(0);
+            return;
         }
+        boolean noExist = true;
         for (int i = 0; i < size; i++) {
             if (storage[i] != r) {
-                System.out.println("Резюме еще нет в списке");
+                storage[size] = r;
+            }else {
+                storage[size] = null;
+                System.out.println("Резюме уже в списке");
+                noExist = false;
             }
         }
-        storage[size] = r;
-        size++;
+        if (noExist) {
+            size++;
+        }
+        System.out.println(r);
+
     }
 
     Resume get(String uuid) {
         for (int i = 0; i < size; i++) {
             if (storage[i].uuid.equals(uuid)) {
-                System.out.println("Резюме " + storage[i].uuid + " есть в списке и получено");
                 return storage[i];
             }
         }
+        System.out.println("Резюме не найдено");
         return null;
     }
 
     void delete(String uuid) {
+        int existSize = size;
         for (int i = 0; i < size; i++) {
             if (storage[i].uuid.equals(uuid)) {
-                System.out.println("Резюме " + storage[i].uuid + " есть в списке и удалено");
                 System.arraycopy(storage, i + 1, storage, i, size);
                 size--;
             }
+        }
+        if (existSize == size) {
+            System.out.println("Резюме не найдено");
         }
     }
 
