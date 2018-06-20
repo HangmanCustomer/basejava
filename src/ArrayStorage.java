@@ -7,10 +7,9 @@ public class ArrayStorage {
     private Resume[] storage = new Resume[10000];
     private int size = 0;
 
-    void update(Resume r) {
-        storage[0] = r;
+    void update(String uuid) {
+        storage[0] = get(uuid);
         System.out.println("Резюме изменено");
-
     }
 
     void clear() {
@@ -23,43 +22,26 @@ public class ArrayStorage {
             System.out.println("Массив заполнен");
             return;
         }
-        boolean noExist = true;
-        for (int i = 0; i < size; i++) {
-            if (storage[i] != r) {
-                storage[size] = r;
-            }else {
-                storage[size] = null;
-                System.out.println("Резюме уже в списке");
-                noExist = false;
-            }
-        }
-        if (noExist) {
-            size++;
-        }
-        System.out.println(r);
+        storage[size] = r;
+        size++;
 
     }
 
     Resume get(String uuid) {
-        for (int i = 0; i < size; i++) {
-            if (storage[i].uuid.equals(uuid)) {
-                return storage[i];
-            }
+        if (storage[searching(uuid)] == null) {
+            System.out.println("Резюме не найдено");
+            return null;
+        } else {
+            return storage[searching(uuid)];
         }
-        System.out.println("Резюме не найдено");
-        return null;
     }
 
     void delete(String uuid) {
-        int existSize = size;
-        for (int i = 0; i < size; i++) {
-            if (storage[i].uuid.equals(uuid)) {
-                System.arraycopy(storage, i + 1, storage, i, size);
-                size--;
-            }
-        }
-        if (existSize == size) {
-            System.out.println("Резюме не найдено");
+        if (storage[searching(uuid)] == null) {
+            System.out.println("Резюме не удалить ибо не найдено");
+        } else {
+            System.arraycopy(storage, searching(uuid) + 1, storage, searching(uuid), size);
+            size--;
         }
     }
 
@@ -69,5 +51,20 @@ public class ArrayStorage {
 
     int size() {
         return size;
+
+    }
+
+    int searching(String uuid) {
+        int search;
+        for (search = 0; search < size; search++) {
+            if (storage[search].uuid.equals(uuid)) {
+                break;
+            }
+//            } else {
+//                System.out.println("Резюме не найдено");
+//               // break;
+//            }
+        }
+        return search;
     }
 }
