@@ -7,9 +7,13 @@ public class ArrayStorage {
     private Resume[] storage = new Resume[10000];
     private int size = 0;
 
-    void update(String uuid) {
-        storage[0] = get(uuid);
-        System.out.println("Резюме изменено");
+    void update(Resume r) {
+        for (int i = 0; i < size; i++) {
+            if (storage[i].uuid.equals(r.uuid)) {
+                storage[i] = r;
+                System.out.println("Резюме изменено");
+            }
+        }
     }
 
     void clear() {
@@ -40,19 +44,19 @@ public class ArrayStorage {
     }
 
     Resume get(String uuid) {
-        if (storage[searching(uuid)] == null) {
+        if (searched(uuid) < 0) {
             System.out.println("Резюме не найдено");
             return null;
         } else {
-            return storage[searching(uuid)];
+            return storage[searched(uuid)];
         }
     }
 
     void delete(String uuid) {
-        if (storage[searching(uuid)] == null) {
-            System.out.println("Резюме не удалить ибо не найдено");
+        if (searched(uuid) < 0) {
+            System.out.println("Резюме не удалить так как не найдено");
         } else {
-            System.arraycopy(storage, searching(uuid) + 1, storage, searching(uuid), size);
+            System.arraycopy(storage, searched(uuid) + 1, storage, searched(uuid), size);
             size--;
         }
     }
@@ -66,13 +70,12 @@ public class ArrayStorage {
 
     }
 
-    int searching(String uuid) {
-        int search;
-        for (search = 0; search < size; search++) {
+    private int searched(String uuid) {
+        for (int search = 0; search < size; search++) {
             if (storage[search].uuid.equals(uuid)) {
                 return search;
             }
         }
-        return size + 1;
+        return -1;
     }
 }

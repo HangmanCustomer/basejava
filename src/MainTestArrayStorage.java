@@ -25,7 +25,7 @@ public class MainTestArrayStorage {
 
 
         printAll();
-        ARRAY_STORAGE.update(r3.uuid);
+        ARRAY_STORAGE.update(r1);
         ARRAY_STORAGE.delete(r1.uuid);
         printAll();
         System.out.println("Size: " + ARRAY_STORAGE.size());
