@@ -23,8 +23,20 @@ public class ArrayStorage {
             return;
         }
         storage[size] = r;
-        size++;
-
+        boolean exist = false;
+        for (int i = 0; i < size; i++) {
+            if (storage[i] != r) {
+                exist = false;
+            } else {
+                exist = true;
+                storage[size] = null;
+                System.out.println("Резуме " + r + " уже заведено");
+                break;
+            }
+        }
+        if (!exist) {
+            size++;
+        }
     }
 
     Resume get(String uuid) {
@@ -58,9 +70,9 @@ public class ArrayStorage {
         int search;
         for (search = 0; search < size; search++) {
             if (storage[search].uuid.equals(uuid)) {
-                break;
+                return search;
             }
         }
-        return search;
+        return size + 1;
     }
 }
