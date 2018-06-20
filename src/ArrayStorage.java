@@ -60,10 +60,6 @@ public class ArrayStorage {
             if (storage[search].uuid.equals(uuid)) {
                 break;
             }
-//            } else {
-//                System.out.println("Резюме не найдено");
-//               // break;
-//            }
         }
         return search;
     }
