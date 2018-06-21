@@ -13,7 +13,7 @@ public class ArrayStorage {
             System.out.println("Резюме не найдено");
         } else {
             storage[search] = r;
-            System.out.println("Резюме изменено на " + r);
+            System.out.println("Резюме изменено на ");
         }
     }
 
@@ -33,7 +33,7 @@ public class ArrayStorage {
             storage[size] = r;
             size++;
         } else {
-            System.out.println("Резуме " + r + " уже заведено");
+            System.out.println("Резюме " + r + " уже заведено");
         }
     }
 
