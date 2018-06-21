@@ -1,3 +1,7 @@
+package com.urise.webapp.storage;
+
+import com.urise.webapp.model.Resume;
+
 import java.util.Arrays;
 
 /**
@@ -7,28 +11,28 @@ public class ArrayStorage {
     private Resume[] storage = new Resume[10000];
     private int size = 0;
 
-    void update(Resume r) {
-        int search = search(r.uuid);
+    public void update(Resume r) {
+        int search = search(r.getUuid());
         if (search < 0) {
             System.out.println("Резюме не найдено");
         } else {
             storage[search] = r;
-            System.out.println("Резюме изменено на ");
+            System.out.println("Резюме изменено");
         }
     }
 
 
-    void clear() {
+    public void clear() {
         Arrays.fill(storage, 0, size, null);
         size = 0;
     }
 
-    void save(Resume r) {
+    public void save(Resume r) {
         if (size == storage.length) {
             System.out.println("Массив заполнен");
             return;
         }
-        int search = search(r.uuid);
+        int search = search(r.getUuid());
         if (search < 0) {
             storage[size] = r;
             size++;
@@ -37,7 +41,7 @@ public class ArrayStorage {
         }
     }
 
-    Resume get(String uuid) {
+    public Resume get(String uuid) {
         int search = search(uuid);
         if (search < 0) {
             System.out.println("Резюме не найдено");
@@ -47,7 +51,7 @@ public class ArrayStorage {
         }
     }
 
-    void delete(String uuid) {
+    public void delete(String uuid) {
         int search = search(uuid);
         if (search < 0) {
             System.out.println("Резюме не удалить");
@@ -57,18 +61,18 @@ public class ArrayStorage {
         }
     }
 
-    Resume[] getAll() {
+    public Resume[] getAll() {
         return Arrays.copyOfRange(storage, 0, size);
     }
 
-    int size() {
+    public int size() {
         return size;
 
     }
 
     private int search(String uuid) {
         for (int search = 0; search < size; search++) {
-            if (storage[search].uuid.equals(uuid)) {
+            if (storage[search].getUuid().equals(uuid)) {
                 return search;
             }
         }
