@@ -1,10 +1,10 @@
-package com.urise.webapp;
+package ru.javawebinar.basejava;
 
-import com.urise.webapp.model.Resume;
-import com.urise.webapp.storage.ArrayStorage;
+import ru.javawebinar.basejava.model.Resume;
+import ru.javawebinar.basejava.storage.ArrayStorage;
 
 /**
- * Test for com.urise.webapp.storage.com.urise.webapp.storage.ArrayStorage
+ * Test ru.javawebinar.basejava.storage.ArrayStorage
  */
 public class MainTestArrayStorage {
     static final ArrayStorage ARRAY_STORAGE = new ArrayStorage();
@@ -17,7 +17,6 @@ public class MainTestArrayStorage {
         Resume r3 = new Resume();
         r3.setUuid("uuid3");
 
-
         ARRAY_STORAGE.save(r1);
         ARRAY_STORAGE.save(r2);
         ARRAY_STORAGE.save(r3);
@@ -27,17 +26,14 @@ public class MainTestArrayStorage {
 
         System.out.println("Get dummy: " + ARRAY_STORAGE.get("dummy"));
 
-
         printAll();
-        ARRAY_STORAGE.update(r1);
-        ARRAY_STORAGE.delete(r3.getUuid());
+        ARRAY_STORAGE.delete(r1.getUuid());
         printAll();
-        System.out.println("Size: " + ARRAY_STORAGE.size());
         ARRAY_STORAGE.clear();
         printAll();
+
         System.out.println("Size: " + ARRAY_STORAGE.size());
     }
-
 
     static void printAll() {
         System.out.println("\nGet All");
