@@ -24,10 +24,10 @@ public abstract class AbstractArrayStorage implements Storage {
         }
     }
 
-    public void save(Resume r){
+    public void save(Resume r) {
         if (size >= STORAGE_LIMIT) {
             System.out.println("Storage overflow");
-        }else{
+        } else {
             basicSave(r);
         }
     }
@@ -59,6 +59,8 @@ public abstract class AbstractArrayStorage implements Storage {
     }
 
     protected abstract int getIndex(String uuid);
+
     protected abstract void basicSave(Resume r);
+
     protected abstract void basicDelete(int index);
 }
