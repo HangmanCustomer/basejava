@@ -50,7 +50,7 @@ public class MainTestArrayStorage {
 
 
         printSortedAll();
-        SORTED_ARRAY_STORAGE.delete(r1.getUuid());
+        SORTED_ARRAY_STORAGE.delete(r2.getUuid());
         SORTED_ARRAY_STORAGE.update(r1);
         printSortedAll();
         SORTED_ARRAY_STORAGE.clear();
