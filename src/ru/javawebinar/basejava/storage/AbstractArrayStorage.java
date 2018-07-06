@@ -5,7 +5,7 @@ import ru.javawebinar.basejava.model.Resume;
 import java.util.Arrays;
 
 public abstract class AbstractArrayStorage implements Storage {
-    protected static final int STORAGE_LIMIT = 10000;
+    protected static final int STORAGE_LIMIT = 3;
 
     protected Resume[] storage = new Resume[STORAGE_LIMIT];
     protected int size = 0;
@@ -16,10 +16,11 @@ public abstract class AbstractArrayStorage implements Storage {
     }
 
     public void update(Resume resume) {
-        if (checkIndex((resume.getUuid()))) {
+        int index = getIndex(resume.getUuid());
+        if (index < 0) {
             System.out.println("Resume with uuid " + resume.getUuid() + " not exist");
         } else {
-            storage[getIndex(resume.getUuid())] = resume;
+            storage[index] = resume;
         }
     }
 
@@ -31,25 +32,27 @@ public abstract class AbstractArrayStorage implements Storage {
             if (size >= STORAGE_LIMIT) {
                 System.out.println("Storage overflow");
             } else {
-                directSave(resume);
+                directSave(resume, index);
                 size++;
             }
         }
     }
 
     public Resume get(String uuid) {
-        if (checkIndex(uuid)) {
+        int index = getIndex(uuid);
+        if (index < 0) {
             System.out.println("Resume with uuid " + uuid + " not exist");
             return null;
         }
-        return storage[getIndex(uuid)];
+        return storage[index];
     }
 
     public void delete(String uuid) {
-        if (checkIndex(uuid)) {
+        int index = getIndex(uuid);
+        if (index < 0) {
             System.out.println("Resume with uuid " + uuid + " not exist");
         } else {
-            directDelete(getIndex(uuid));
+            directDelete(index);
             size--;
         }
     }
@@ -64,12 +67,7 @@ public abstract class AbstractArrayStorage implements Storage {
 
     protected abstract int getIndex(String uuid);
 
-    protected abstract void directSave(Resume resume);
+    protected abstract void directSave(Resume resume, int index);
 
     protected abstract void directDelete(int index);
-
-    private boolean checkIndex(String uuid) {
-        int index = getIndex(uuid);
-        return index < 0;
-    }
 }

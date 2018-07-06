@@ -48,7 +48,6 @@ public class MainTestArrayStorage {
 
         System.out.println("Get dummy: " + SORTED_ARRAY_STORAGE.get("dummy"));
 
-
         printSortedAll();
         SORTED_ARRAY_STORAGE.delete(r2.getUuid());
         SORTED_ARRAY_STORAGE.update(r1);
