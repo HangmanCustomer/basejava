@@ -42,7 +42,6 @@ public class MainTestArrayStorage {
         SORTED_ARRAY_STORAGE.save(r3);
         SORTED_ARRAY_STORAGE.save(r2);
 
-
         System.out.println("Get r1: " + SORTED_ARRAY_STORAGE.get(r1.getUuid()));
         System.out.println("Size: " + SORTED_ARRAY_STORAGE.size());
 
