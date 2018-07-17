@@ -8,7 +8,7 @@ import ru.javawebinar.basejava.model.Resume;
 import java.util.Arrays;
 
 public abstract class AbstractArrayStorage implements Storage {
-    protected static final int STORAGE_LIMIT = 10000;
+    protected static final int STORAGE_LIMIT = 10;
 
     protected Resume[] storage = new Resume[STORAGE_LIMIT];
     protected int size = 0;
@@ -40,7 +40,7 @@ public abstract class AbstractArrayStorage implements Storage {
         if (index >= 0) {
             throw new ExistStorageException(resume.getUuid());
         } else if (size == STORAGE_LIMIT) {
-            throw new StorageException("Storage overflow", resume.getUuid());
+            throw new StorageException("Storage Overflow", resume.getUuid());
         } else {
             insertElement(resume, index);
             size++;
