@@ -21,6 +21,7 @@ public abstract class AbstractArrayStorageTest {
     Resume resume1 = new Resume(UUID_1);
     Resume resume2 = new Resume(UUID_2);
     Resume resume3 = new Resume(UUID_3);
+    Resume resume4 = new Resume(UUID_4);
 
     public AbstractArrayStorageTest(Storage sStorage) {
         storage = sStorage;
@@ -53,9 +54,9 @@ public abstract class AbstractArrayStorageTest {
     }
 
     @Test(expected = NotExistStorageException.class)
-    public void updateFail() {
-        storage.update(resume1);
-        assertSame(resume1, storage.get(UUID_4));
+    public void updateNotExist() {
+        storage.update(resume4);
+        assertSame(resume4, storage.get(UUID_4));
     }
 
     @Test
@@ -66,7 +67,21 @@ public abstract class AbstractArrayStorageTest {
 
     @Test
     public void save() {
-        assertEquals(3, storage.size());
+        storage.save(resume4);
+        assertEquals(4, storage.size());
+    }
+
+    @Test
+    public void storageOverFlow() throws StorageException {
+        for (int i = storage.size(); i <= AbstractArrayStorage.STORAGE_LIMIT; i++) {
+            try {
+                storage.save(new Resume());
+            } catch (StorageException e) {
+                if (storage.size() < AbstractArrayStorage.STORAGE_LIMIT) {
+                    Assert.fail("fail");
+                }
+            }
+        }
     }
 
     @Test(expected = ExistStorageException.class)
@@ -95,19 +110,6 @@ public abstract class AbstractArrayStorageTest {
         storage.get(UUID_4);
     }
 
-    @Test
-    public void storageOverFlow() throws StorageException {
-        int storageLim = AbstractArrayStorage.STORAGE_LIMIT;
-        for (int i = 2; i < storageLim + 1; i++) {
-            try {
-                storage.save(new Resume());
-                if (storage.size() > storageLim) {
-                    Assert.fail("fail");
-                }
-            } catch (StorageException e) {
-                assert (e.getMessage() == "Storage Overflow");
-            }
-        }
-    }
+
 }
 
