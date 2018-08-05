@@ -9,12 +9,12 @@ public class MapStorage extends AbstractStorage {
 
 
     @Override
-    protected void doUpdate(Resume resume) {
+    protected void doUpdate(int index) {
 
     }
 
     @Override
-    protected void doDelete(String uuid) {
+    protected void doDelete(int index) {
 
     }
 
