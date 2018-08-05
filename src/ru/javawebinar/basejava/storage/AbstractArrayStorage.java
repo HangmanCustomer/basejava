@@ -26,11 +26,6 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
         storage[index] = storage[index];
     }
 
-
-    public Resume[] getAll() {
-        return Arrays.copyOfRange(storage, 0, size);
-    }
-
     @Override
     protected void doSave(Resume resume) {
         if (size == STORAGE_LIMIT) {
@@ -53,19 +48,11 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
         return storage[index];
     }
 
-    @Override
-    protected int checkException(String uuid) {
-        int index = getIndex(uuid);
-        if (index < 0) {
-            throw new NotExistStorageException(uuid);
-        }
-        return index;
+    public Resume[] getAll() {
+        return Arrays.copyOfRange(storage, 0, size);
     }
 
     protected abstract void fillDeletedElement(int index);
 
     protected abstract void insertElement(Resume resume, int index);
-
-
-
 }

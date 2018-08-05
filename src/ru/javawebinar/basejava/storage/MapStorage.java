@@ -34,11 +34,6 @@ public class MapStorage extends AbstractStorage {
     }
 
     @Override
-    protected int checkException(String uuid) {
-        return 0;
-    }
-
-    @Override
     public void clear() {
 
     }
