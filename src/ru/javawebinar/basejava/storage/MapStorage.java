@@ -5,13 +5,8 @@ import ru.javawebinar.basejava.model.Resume;
 import java.util.HashMap;
 
 public class MapStorage extends AbstractStorage {
-    protected HashMap <String, Resume> storage = new HashMap<>();
+    protected HashMap<String, Resume> storage = new HashMap<>();
 
-
-    @Override
-    protected Resume doGet(String uuid) {
-        return null;
-    }
 
     @Override
     protected void doUpdate(Resume resume) {
@@ -30,6 +25,16 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected int getIndex(String uuid) {
+        return 0;
+    }
+
+    @Override
+    protected Resume doGet(int index) {
+        return null;
+    }
+
+    @Override
+    protected int checkException(String uuid) {
         return 0;
     }
 
