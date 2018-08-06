@@ -9,7 +9,7 @@ public class MapStorage extends AbstractStorage {
 
 
     @Override
-    protected void doUpdate(int index) {
+    protected void doUpdate(Resume resume, int index) {
 
     }
 
@@ -19,7 +19,7 @@ public class MapStorage extends AbstractStorage {
     }
 
     @Override
-    protected void doSave(Resume resume) {
+    protected void doSave(Resume resume, int index) {
 
     }
 

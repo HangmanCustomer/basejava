@@ -7,11 +7,7 @@ import ru.javawebinar.basejava.exception.ExistStorageException;
 import ru.javawebinar.basejava.exception.NotExistStorageException;
 import ru.javawebinar.basejava.model.Resume;
 
-import java.util.Arrays;
-
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.*;
 
 public abstract class AbstractStorageTest {
     protected Storage storage;
@@ -21,13 +17,13 @@ public abstract class AbstractStorageTest {
     private static final String UUID_3 = "uuid3";
     private static final String UUID_4 = "uuid4";
 
-    Resume resume1 = new Resume(UUID_1);
-    Resume resume2 = new Resume(UUID_2);
-    Resume resume3 = new Resume(UUID_3);
-    Resume resume4 = new Resume(UUID_4);
+    private static Resume resume1 = new Resume(UUID_1);
+    private static Resume resume2 = new Resume(UUID_2);
+    private static Resume resume3 = new Resume(UUID_3);
+    private static Resume resume4 = new Resume(UUID_4);
 
-    public AbstractStorageTest(Storage sStorage) {
-        storage = sStorage;
+    protected AbstractStorageTest(Storage storage) {
+        this.storage = storage;
     }
 
     @Before
