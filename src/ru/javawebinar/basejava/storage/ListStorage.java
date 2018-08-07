@@ -10,7 +10,7 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     protected void doUpdate(Resume resume, int index) {
-        storage.set(index, storage.get(index));
+        storage.set(index, resume);
     }
 
     @Override
