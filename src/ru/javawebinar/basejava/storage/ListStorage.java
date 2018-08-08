@@ -14,6 +14,16 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
+    protected void doDelete(String uuid) {
+
+    }
+
+    @Override
+    protected Resume doGet(String uuid) {
+        return null;
+    }
+
+    @Override
     protected void doSave(Resume resume, int index) {
         storage.add(resume);
     }

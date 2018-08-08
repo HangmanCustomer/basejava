@@ -35,6 +35,7 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
         }
     }
 
+
     @Override
     protected void doDelete(int index) {
         fillDeletedElement(index);
@@ -54,4 +55,15 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
     protected abstract void fillDeletedElement(int index);
 
     protected abstract void insertElement(Resume resume, int index);
+
+    @Override
+    protected void doDelete(String uuid) {
+
+    }
+
+    @Override
+    protected Resume doGet(String uuid) {
+        return null;
+    }
+
 }

@@ -46,7 +46,11 @@ public abstract class AbstractStorage implements Storage {
 
     protected abstract void doDelete(int index);
 
+    protected abstract void doDelete(String uuid);
+
     protected abstract Resume doGet(int index);
+
+    protected abstract Resume doGet(String uuid);
 
     protected abstract int getIndex(String uuid);
 }
