@@ -7,11 +7,11 @@ import ru.javawebinar.basejava.model.Resume;
 public abstract class AbstractStorage implements Storage {
 
     public void update(Resume resume) {
-        doUpdate(resume, checkKey(resume.getUuid()));
+        doUpdate(resume, (int) checkKey(resume.getUuid()));
     }
 
     public void save(Resume resume) {
-        doSave(resume, checkSaveKey(resume.getUuid()));
+        doSave(resume, (int) checkSaveKey(resume.getUuid()));
     }
 
     public void delete(String uuid) {
@@ -22,7 +22,7 @@ public abstract class AbstractStorage implements Storage {
         return doGet(checkKey(uuid));
     }
 
-    private int checkSaveKey(String uuid) {
+    private Object checkSaveKey(String uuid) {
         int index = getIndex(uuid);
         if (index < 0) {
             return index;
@@ -31,7 +31,7 @@ public abstract class AbstractStorage implements Storage {
         }
     }
 
-    private int checkKey(String uuid) {
+    private Object checkKey(String uuid) {
         int index = getIndex(uuid);
         if (index < 0) {
             throw new NotExistStorageException(uuid);
@@ -44,13 +44,9 @@ public abstract class AbstractStorage implements Storage {
 
     protected abstract void doSave(Resume resume, int index);
 
-    protected abstract void doDelete(int index);
+    protected abstract void doDelete(Object o);
 
-    protected abstract void doDelete(String uuid);
-
-    protected abstract Resume doGet(int index);
-
-    protected abstract Resume doGet(String uuid);
+    protected abstract Resume doGet(Object o);
 
     protected abstract int getIndex(String uuid);
 }

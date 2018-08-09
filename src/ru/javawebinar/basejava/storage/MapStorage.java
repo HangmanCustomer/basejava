@@ -19,18 +19,18 @@ public class MapStorage extends AbstractStorage {
     }
 
     @Override
+    protected void doDelete(Object o) {
+
+    }
+
+    @Override
+    protected Resume doGet(Object o) {
+        return null;
+    }
+
+    @Override
     protected int getIndex(String uuid) {
         return 0;
-    }
-
-    @Override
-    protected void doDelete(String uuid) {
-
-    }
-
-    @Override
-    protected Resume doGet(String uuid) {
-        return null;
     }
 
     @Override
@@ -48,13 +48,5 @@ public class MapStorage extends AbstractStorage {
         return 0;
     }
 
-    @Override
-    protected void doDelete(int index) {
 
-    }
-
-    @Override
-    protected Resume doGet(int index) {
-        return null;
-    }
 }

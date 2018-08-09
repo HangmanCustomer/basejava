@@ -37,15 +37,16 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
 
 
     @Override
-    protected void doDelete(int index) {
-        fillDeletedElement(index);
+    protected void doDelete(Object o) {
+
+        fillDeletedElement((int) o);
         storage[size - 1] = null;
         size--;
     }
 
     @Override
-    protected Resume doGet(int index) {
-        return storage[index];
+    protected Resume doGet(Object o) {
+        return storage[(int) o];
     }
 
     public Resume[] getAll() {
@@ -55,15 +56,5 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
     protected abstract void fillDeletedElement(int index);
 
     protected abstract void insertElement(Resume resume, int index);
-
-    @Override
-    protected void doDelete(String uuid) {
-
-    }
-
-    @Override
-    protected Resume doGet(String uuid) {
-        return null;
-    }
 
 }
