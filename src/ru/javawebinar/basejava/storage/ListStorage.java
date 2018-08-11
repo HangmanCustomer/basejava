@@ -9,28 +9,28 @@ public class ListStorage extends AbstractStorage {
     protected ArrayList<Resume> storage = new ArrayList<>();
 
     @Override
-    protected void doUpdate(Resume resume, int index) {
-        storage.set(index, resume);
+    protected void doUpdate(Resume resume, Object index) {
+        storage.set((int) index, resume);
     }
 
     @Override
-    protected void doSave(Resume resume, int index) {
+    protected void doSave(Resume resume, Object index) {
         storage.add(resume);
     }
 
     @Override
-    protected void doDelete(Object o) {
-        storage.remove((int) o);
+    protected void doDelete(Object index) {
+        storage.remove((int) index);
     }
 
     @Override
-    protected Resume doGet(Object o) {
-        return storage.get((int) o);
+    protected Resume doGet(Object index) {
+        return storage.get((int) index);
     }
 
     @Override
-    protected int getIndex(String uuid) {
-        return storage.indexOf(new Resume(uuid));
+    protected int getKey(Object uuid) {
+        return storage.indexOf(new Resume((String) uuid));
     }
 
     @Override

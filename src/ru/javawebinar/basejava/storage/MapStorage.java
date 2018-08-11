@@ -9,27 +9,27 @@ public class MapStorage extends AbstractStorage {
 
 
     @Override
-    protected void doUpdate(Resume resume, int index) {
+    protected void doUpdate(Resume resume, Object key) {
 
     }
 
     @Override
-    protected void doSave(Resume resume, int index) {
+    protected void doSave(Resume resume, Object key) {
 
     }
 
     @Override
-    protected void doDelete(Object o) {
+    protected void doDelete(Object key) {
 
     }
 
     @Override
-    protected Resume doGet(Object o) {
+    protected Resume doGet(Object key) {
         return null;
     }
 
     @Override
-    protected int getIndex(String uuid) {
+    protected int getKey(Object key) {
         return 0;
     }
 

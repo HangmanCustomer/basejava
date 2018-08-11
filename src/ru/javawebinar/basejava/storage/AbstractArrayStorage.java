@@ -21,32 +21,32 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
     }
 
     @Override
-    protected void doUpdate(Resume resume, int index) {
-        storage[index] = resume;
+    protected void doUpdate(Resume resume, Object index) {
+        storage[(int) index] = resume;
     }
 
     @Override
-    protected void doSave(Resume resume, int index) {
+    protected void doSave(Resume resume, Object index) {
         if (size == STORAGE_LIMIT) {
             throw new StorageException("Storage Overflow", resume.getUuid());
         } else {
-            insertElement(resume, index);
+            insertElement(resume, (int) index);
             size++;
         }
     }
 
 
     @Override
-    protected void doDelete(Object o) {
+    protected void doDelete(Object index) {
 
-        fillDeletedElement((int) o);
+        fillDeletedElement((int) index);
         storage[size - 1] = null;
         size--;
     }
 
     @Override
-    protected Resume doGet(Object o) {
-        return storage[(int) o];
+    protected Resume doGet(Object index) {
+        return storage[(int) index];
     }
 
     public Resume[] getAll() {
