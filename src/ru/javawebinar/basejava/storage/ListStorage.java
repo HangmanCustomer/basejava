@@ -3,10 +3,11 @@ package ru.javawebinar.basejava.storage;
 import ru.javawebinar.basejava.model.Resume;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListStorage extends AbstractStorage {
 
-    protected ArrayList<Resume> storage = new ArrayList<>();
+    protected List<Resume> storage = new ArrayList<>();
 
     @Override
     protected void doUpdate(Resume resume, Object index) {
@@ -29,13 +30,28 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
-    protected int getKey(Object uuid) {
-        return storage.indexOf(new Resume((String) uuid));
+    protected boolean isExist(Object index) {
+        return index != null;
+    }
+
+    @Override
+    protected Object getKey(Object uuid) {
+        for (int i = 0; i < storage.size(); i++) {
+            if (storage.get(i).getUuid().equals(uuid)) {
+                return i;
+            }
+        }
+        return null;
     }
 
     @Override
     public void clear() {
         storage.clear();
+    }
+
+    @Override
+    public List<Resume> getAllSorted() {
+        return storage;
     }
 
     @Override

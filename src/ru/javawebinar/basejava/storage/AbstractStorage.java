@@ -7,38 +7,40 @@ import ru.javawebinar.basejava.model.Resume;
 public abstract class AbstractStorage implements Storage {
 
     public void update(Resume resume) {
-        doUpdate(resume, checkKey(resume.getUuid()));
+        doUpdate(resume, getExistedKey(resume.getUuid()));
     }
 
     public void save(Resume resume) {
-        doSave(resume, checkSaveKey(resume.getUuid()));
+        doSave(resume, getNotExistedKey(resume.getUuid()));
     }
 
     public void delete(String uuid) {
-        doDelete(checkKey(uuid));
+        doDelete(getExistedKey(uuid));
     }
 
     public Resume get(String uuid) {
-        return doGet(checkKey(uuid));
+        return doGet(getExistedKey(uuid));
     }
 
-    private Object checkSaveKey(String uuid) {
-        int index = getKey(uuid);
-        if (index < 0) {
-            return index;
-        } else {
+    private Object getNotExistedKey(String uuid) {
+        Object index = getKey(uuid);
+        if (isExist(index)) {
             throw new ExistStorageException(uuid);
+        } else {
+            return index;
         }
     }
 
-    private Object checkKey(String uuid) {
-        int index = getKey(uuid);
-        if (index < 0) {
+    private Object getExistedKey(String uuid) {
+        Object index = getKey(uuid);
+        if (!isExist(index)) {
             throw new NotExistStorageException(uuid);
         } else {
             return index;
         }
     }
+
+    protected abstract boolean isExist(Object index);
 
     protected abstract void doUpdate(Resume resume, Object key);
 
@@ -48,5 +50,5 @@ public abstract class AbstractStorage implements Storage {
 
     protected abstract Resume doGet(Object key);
 
-    protected abstract int getKey(Object key);
+    protected abstract Object getKey(Object key);
 }
