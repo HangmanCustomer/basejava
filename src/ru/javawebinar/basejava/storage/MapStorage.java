@@ -13,7 +13,7 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected void doUpdate(Resume resume, Object key) {
-
+        storage.put((String) key, resume).setFullName("New Name");
     }
 
     @Override
@@ -24,7 +24,6 @@ public class MapStorage extends AbstractStorage {
     @Override
     protected void doDelete(Object key) {
         storage.remove(key);
-
     }
 
     @Override
@@ -34,16 +33,16 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected boolean isExist(Object key) {
-        return key != null;
+        for (Map.Entry<String, Resume> entry : storage.entrySet())
+            if (entry.getKey().equals(key))
+                return key != null;
+        return false;
     }
+
 
     @Override
     protected Object getKey(Object key) {
-        for (Map.Entry<String, Resume> entry : storage.entrySet())
-            if (entry.getKey().equals(key)) {
-                return key;
-            }
-        return null;
+        return key;
     }
 
     @Override
@@ -57,10 +56,6 @@ public class MapStorage extends AbstractStorage {
         return new ArrayList<>(storage.values());
     }
 
-    @Override
-    public Resume[] getAll() {
-        return new Resume[0];
-    }
 
     @Override
     public int size() {

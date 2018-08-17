@@ -27,7 +27,7 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
 
     @Override
     protected void doUpdate(Resume resume, Object index) {
-        storage[(int) index] = resume;
+        storage[(int) index].setFullName("new Name");
     }
 
     @Override
@@ -42,7 +42,6 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
 
     @Override
     protected void doDelete(Object index) {
-
         fillDeletedElement((int) index);
         storage[size - 1] = null;
         size--;
@@ -55,16 +54,11 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
 
     @Override
     protected boolean isExist(Object index) {
-        return (int) index >= 0 ;
+        return (int) index >= 0;
     }
 
     @Override
     public List<Resume> getAllSorted() {
-        return Arrays.asList(Arrays.copyOfRange(storage, 0, size));
+        return Arrays.asList(Arrays.copyOf(storage, size));
     }
-
-    public Resume[] getAll() {
-        return Arrays.copyOfRange(storage, 0, size);
-    }
-
 }

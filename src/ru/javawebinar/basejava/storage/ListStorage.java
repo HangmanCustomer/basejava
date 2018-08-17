@@ -3,6 +3,7 @@ package ru.javawebinar.basejava.storage;
 import ru.javawebinar.basejava.model.Resume;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ListStorage extends AbstractStorage {
@@ -11,7 +12,7 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     protected void doUpdate(Resume resume, Object index) {
-        storage.set((int) index, resume);
+        storage.get((int) index).setFullName("New Name");
     }
 
     @Override
@@ -51,12 +52,7 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     public List<Resume> getAllSorted() {
-        return storage;
-    }
-
-    @Override
-    public Resume[] getAll() {
-        return storage.toArray(new Resume[0]);
+        return Arrays.asList(storage.toArray(new Resume[0]));
     }
 
     @Override

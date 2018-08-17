@@ -58,14 +58,14 @@ public class MainTestArrayStorage {
 
     private static void printAll() {
         System.out.println("\nGet All");
-        for (Resume r : ARRAY_STORAGE.getAll()) {
+        for (Resume r : ARRAY_STORAGE.getAllSorted()) {
             System.out.println(r);
         }
     }
 
     private static void printSortedAll() {
         System.out.println("\nGet All");
-        for (Resume r : SORTED_ARRAY_STORAGE.getAll()) {
+        for (Resume r : SORTED_ARRAY_STORAGE.getAllSorted()) {
             System.out.println(r);
         }
     }

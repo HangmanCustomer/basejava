@@ -23,24 +23,24 @@ public abstract class AbstractStorage implements Storage {
     }
 
     private Object getNotExistedKey(String uuid) {
-        Object index = getKey(uuid);
-        if (isExist(index)) {
+        Object key = getKey(uuid);
+        if (isExist(key)) {
             throw new ExistStorageException(uuid);
         } else {
-            return index;
+            return key;
         }
     }
 
     private Object getExistedKey(String uuid) {
-        Object index = getKey(uuid);
-        if (!isExist(index)) {
+        Object key = getKey(uuid);
+        if (!isExist(key)) {
             throw new NotExistStorageException(uuid);
         } else {
-            return index;
+            return key;
         }
     }
 
-    protected abstract boolean isExist(Object index);
+    protected abstract boolean isExist(Object key);
 
     protected abstract void doUpdate(Resume resume, Object key);
 
