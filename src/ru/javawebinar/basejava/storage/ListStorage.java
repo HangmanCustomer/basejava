@@ -12,7 +12,7 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     protected void doUpdate(Resume resume, Object index) {
-        storage.get((int) index).setFullName("New Name");
+        storage.set((int) index, new Resume(resume.getUuid(), "new Name"));
     }
 
     @Override

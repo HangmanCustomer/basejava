@@ -12,10 +12,10 @@ public class MainTestArrayStorage {
     private static final SortedArrayStorage SORTED_ARRAY_STORAGE = new SortedArrayStorage();
 
     public static void main(String[] args) {
-        final Resume r1 = new Resume();
-        final Resume r2 = new Resume();
-        final Resume r3 = new Resume();
-        final Resume r4 = new Resume();
+        final Resume r1 = new Resume("");
+        final Resume r2 = new Resume("");
+        final Resume r3 = new Resume("");
+        final Resume r4 = new Resume("");
 
         ARRAY_STORAGE.save(r2);
         ARRAY_STORAGE.save(r1);

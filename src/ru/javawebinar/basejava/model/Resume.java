@@ -8,8 +8,9 @@ public class Resume implements Comparable<Resume> {
 
     private String fullName;
 
-    public Resume() {
-        this(UUID.randomUUID().toString(), null);
+    public Resume(String fullName) {
+
+        this(UUID.randomUUID().toString(), fullName);
 
     }
 
@@ -38,14 +39,13 @@ public class Resume implements Comparable<Resume> {
         Resume resume = (Resume) o;
 
         if (!uuid.equals(resume.uuid)) return false;
-        return fullName.equals(resume.fullName);
+        return fullName != null ? fullName.equals(resume.fullName) : resume.fullName == null;
     }
-
 
     @Override
     public int hashCode() {
         int result = uuid.hashCode();
-        result = 31 * result + fullName.hashCode();
+        result = 31 * result + (fullName != null ? fullName.hashCode() : 0);
         return result;
     }
 
@@ -57,9 +57,6 @@ public class Resume implements Comparable<Resume> {
     @Override
     public int compareTo(Resume resume) {
         int result = fullName.compareTo(resume.fullName);
-        if (result != 0) {
-            return result;
-        }
-        return uuid.compareTo(resume.uuid);
+        return result != 0 ? result : uuid.compareTo(resume.uuid);
     }
 }

@@ -27,7 +27,7 @@ public class SortedArrayStorage extends AbstractArrayStorage {
 
     @Override
     protected Object getKey(Object uuid) {
-        Resume searchKey = new Resume((String) uuid,null);
+        Resume searchKey = new Resume((String) uuid,"New Name");
         return Arrays.binarySearch(storage, 0, size, searchKey, RESUME_COMPARATOR);
     }
 

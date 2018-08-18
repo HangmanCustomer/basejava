@@ -7,7 +7,11 @@ import ru.javawebinar.basejava.exception.ExistStorageException;
 import ru.javawebinar.basejava.exception.NotExistStorageException;
 import ru.javawebinar.basejava.model.Resume;
 
-import static org.junit.Assert.*;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 
 public abstract class AbstractStorageTest {
@@ -34,8 +38,6 @@ public abstract class AbstractStorageTest {
         storage.save(resume1);
         storage.save(resume2);
         storage.save(resume3);
-        //  System.out.println(resume1 +" | " + resume2 +" | " + resume3 +" | " + resume4);
-
     }
 
     @Test
@@ -51,20 +53,23 @@ public abstract class AbstractStorageTest {
 
     @Test
     public void update() {
-        storage.update(resume1);
-        assertNotEquals(resume1, storage.get(UUID_1).getFullName());
+        Resume resume5 = new Resume(UUID_1, "Bred");
+        storage.update(resume5);
+        assertNotEquals(resume5.getFullName(), storage.get(UUID_1).getFullName());
+        //System.out.println(storage.get(UUID_1));
     }
 
     @Test(expected = NotExistStorageException.class)
     public void updateNotExist() {
+
         storage.update(resume4);
         assertNotEquals(resume4, storage.get(UUID_4).getFullName());
     }
 
     @Test
     public void getAllSorted() {
-        Resume[] testArray = {resume1, resume2, resume3};
-        assertArrayEquals(testArray, storage.getAllSorted().toArray());
+        List<Resume> testArray = Arrays.asList(resume1, resume2, resume3);
+        assertEquals(testArray, storage.getAllSorted());
     }
 
     @Test
