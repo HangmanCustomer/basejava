@@ -27,7 +27,7 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
 
     @Override
     protected void doUpdate(Resume resume, Object index) {
-        storage[(int) index] = new Resume(resume.getUuid(), "New name");
+                storage[(int) index].setFullName(resume.getFullName());
     }
 
     @Override

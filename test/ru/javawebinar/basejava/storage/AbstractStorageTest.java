@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 
 public abstract class AbstractStorageTest {
@@ -34,6 +33,7 @@ public abstract class AbstractStorageTest {
 
     @Before
     public void setUp() {
+
         storage.clear();
         storage.save(resume1);
         storage.save(resume2);
@@ -53,17 +53,20 @@ public abstract class AbstractStorageTest {
 
     @Test
     public void update() {
+//        System.out.println(storage.get(UUID_1).getFullName());
         Resume resume5 = new Resume(UUID_1, "Bred");
+//        System.out.println(resume1);
         storage.update(resume5);
-        assertNotEquals(resume5.getFullName(), storage.get(UUID_1).getFullName());
-        //System.out.println(storage.get(UUID_1));
+//        System.out.println(resume1);
+//        System.out.println(storage.get(UUID_1).getFullName());
+        assertEquals(resume1, resume5);
     }
 
     @Test(expected = NotExistStorageException.class)
     public void updateNotExist() {
-
-        storage.update(resume4);
-        assertNotEquals(resume4, storage.get(UUID_4).getFullName());
+        Resume resume5 = new Resume(UUID_4, "Bill");
+        storage.update(resume5);
+        assertEquals(resume4, resume5);
     }
 
     @Test
