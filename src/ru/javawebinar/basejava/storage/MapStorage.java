@@ -13,7 +13,7 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected void doUpdate(Resume resume, Object key) {
-        storage.put((String) key, resume).setFullName(resume.getFullName());
+        storage.put((String) key, resume);
     }
 
     @Override
