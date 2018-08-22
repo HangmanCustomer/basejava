@@ -33,7 +33,6 @@ public abstract class AbstractStorageTest {
 
     @Before
     public void setUp() {
-
         storage.clear();
         storage.save(resume1);
         storage.save(resume2);
@@ -62,12 +61,11 @@ public abstract class AbstractStorageTest {
     public void updateNotExist() {
         Resume resume5 = new Resume(UUID_4, "Bill");
         storage.update(resume5);
-        assertEquals(resume5, storage.get(UUID_4));
     }
 
     @Test
     public void getAllSorted() {
-        List<Resume> testArray = Arrays.asList(resume1, resume2, resume3);
+        List<Resume> testArray = Arrays.asList(resume3, resume1, resume2);
         assertEquals(testArray, storage.getAllSorted());
     }
 

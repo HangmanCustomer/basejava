@@ -27,7 +27,6 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
 
     @Override
     protected void doUpdate(Resume resume, Object index) {
-              //  storage[(int) index].setFullName(resume.getFullName());
         storage[(int) index] = resume;
     }
 
@@ -59,7 +58,7 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
     }
 
     @Override
-    public List<Resume> getAllSorted() {
+    protected List<Resume> getCollection() {
         return Arrays.asList(Arrays.copyOf(storage, size));
     }
 }

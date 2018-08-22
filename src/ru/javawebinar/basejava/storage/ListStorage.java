@@ -51,13 +51,12 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
-    public List<Resume> getAllSorted() {
-        return Arrays.asList(storage.toArray(new Resume[0]));
-    }
-
-    @Override
     public int size() {
         return storage.size();
     }
 
+    @Override
+    protected List<Resume> getCollection() {
+        return Arrays.asList(storage.toArray(new Resume[0]));
+    }
 }
