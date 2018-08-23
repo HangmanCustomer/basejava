@@ -23,7 +23,7 @@ public abstract class AbstractStorageTest {
 
 
     private static Resume resume1 = new Resume(UUID_1, "John");
-    private static Resume resume2 = new Resume(UUID_2, "Liza");
+    private static Resume resume2 = new Resume(UUID_2, "John");
     private static Resume resume3 = new Resume(UUID_3, "Harry");
     private static Resume resume4 = new Resume(UUID_4, "Anna");
 
@@ -67,6 +67,7 @@ public abstract class AbstractStorageTest {
     public void getAllSorted() {
         List<Resume> testArray = Arrays.asList(resume3, resume1, resume2);
         assertEquals(testArray, storage.getAllSorted());
+        System.out.println(testArray);
     }
 
     @Test
