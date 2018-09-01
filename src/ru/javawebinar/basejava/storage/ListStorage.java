@@ -6,37 +6,37 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ListStorage extends AbstractStorage {
+public class ListStorage extends AbstractStorage<Integer> {
 
     protected List<Resume> storage = new ArrayList<>();
 
     @Override
-    protected void doUpdate(Resume resume, Object index) {
-        storage.set((int) index, resume);
+    protected void doUpdate(Resume resume, Integer index) {
+        storage.set(index, resume);
     }
 
     @Override
-    protected void doSave(Resume resume, Object index) {
+    protected void doSave(Resume resume, Integer index) {
         storage.add(resume);
     }
 
     @Override
-    protected void doDelete(Object index) {
+    protected void doDelete(Integer index) {
         storage.remove((int) index);
     }
 
     @Override
-    protected Resume doGet(Object index) {
-        return storage.get((int) index);
+    protected Resume doGet(Integer index) {
+        return storage.get(index);
     }
 
     @Override
-    protected boolean isExist(Object index) {
+    protected boolean isExist(Integer index) {
         return index != null;
     }
 
     @Override
-    protected Object getKey(Object uuid) {
+    protected Integer getKey(String uuid) {
         for (int i = 0; i < storage.size(); i++) {
             if (storage.get(i).getUuid().equals(uuid)) {
                 return i;
@@ -56,7 +56,7 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
-    protected List<Resume> getResumeList() {
+    protected List<Resume> doCopyAll() {
         return Arrays.asList(storage.toArray(new Resume[0]));
     }
 }
