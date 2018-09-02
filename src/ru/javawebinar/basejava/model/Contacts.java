@@ -54,8 +54,6 @@ public enum Contacts {
         return value;
     }
 
-    public String getContactInfo() {
-        return null;
-    }
+    public abstract String getContactInfo();
 
 }

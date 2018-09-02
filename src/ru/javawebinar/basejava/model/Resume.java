@@ -1,9 +1,6 @@
 package ru.javawebinar.basejava.model;
 
-import java.util.Map;
-import java.util.Objects;
-import java.util.TreeMap;
-import java.util.UUID;
+import java.util.*;
 
 public class Resume implements Comparable<Resume> {
 
@@ -11,9 +8,9 @@ public class Resume implements Comparable<Resume> {
 
     private String fullName;
 
-    static private Map<String, SectionType> sectionTypes = new TreeMap<>();
-    static private Map<Contacts, String> contacts = new TreeMap<>();
-    static private Map<String, TextSection> textSections = new TreeMap<>();
+    static private Map<String, SectionType> sectionTypes = new HashMap<>();
+
+    static private Map<Contacts, String> contacts = new EnumMap<>(Contacts.class);
 
     public Resume(String fullName) {
         this(UUID.randomUUID().toString(), fullName);
@@ -63,8 +60,6 @@ public class Resume implements Comparable<Resume> {
     public static void main(String[] args) {
         Resume resume = new Resume("Egor");
         System.out.println(resume.getFullName() + "\n");
-
-
         for (Contacts cont : Contacts.values()) {
             contacts.put(cont, cont.getValue());
         }
@@ -72,19 +67,12 @@ public class Resume implements Comparable<Resume> {
 
         System.out.println("\n" + "------||------" + "\n");
 
-
-        for (TextSection text : TextSection.values()) {
-            textSections.put(text.getTitle(), text);
-        }
-        textSections.forEach((key, value) -> System.out.println(key + "\n" + value.getTextInfo() + "\n"));
-
-
         for (SectionType type : SectionType.values()) {
             sectionTypes.put(type.getTitle(), type);
         }
         sectionTypes.forEach((key, value) -> {
             System.out.println(key);
-            value.getSectionInfo().forEach(System.out::println);
+            value.getSectionInfo();
             System.out.println();
         });
     }

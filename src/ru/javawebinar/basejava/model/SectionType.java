@@ -1,49 +1,63 @@
 package ru.javawebinar.basejava.model;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
 
 public enum SectionType {
+    PERSONAL("-Личные качества") {
+        @Override
+        public void getSectionInfo() {
+            System.out.println("Информация о личных качествах");
+        }
+    },
+    OBJECTIVE("-Позиция") {
+        @Override
+        public void getSectionInfo() {
+            System.out.println("занимаемая позиция");
+        }
 
+    },
     ACHIEVEMENT("-Достижения") {
         @Override
-        public ArrayList getSectionInfo() {
-            ArrayList<String> achievements = new ArrayList<>();
-            achievements.add("first achievement");
-            achievements.add("second achievement");
-            achievements.add("third achievement");
-            return achievements;
+        public void getSectionInfo() {
+            ArrayList<String> list = new ArrayList<>();
+            list.add("Достижение 01");
+            list.add("Достижение 02");
+            list.forEach(System.out::println);
         }
+
     },
     QUALIFICATIONS("-Квалификация") {
         @Override
-        public ArrayList getSectionInfo() {
-            ArrayList<String> qualifications = new ArrayList<>();
-            qualifications.add("first qualification");
-            qualifications.add("second qualification");
-            return qualifications;
+        public void getSectionInfo() {
+            ArrayList<String> list = new ArrayList<>();
+            list.add("Технология 01");
+            list.add("Технология 02");
+            list.forEach(System.out::println);
         }
     },
     EXPERIENCE("-Опыт работы") {
         @Override
-        public ArrayList getSectionInfo() {
-            ArrayList<String> experiance = new ArrayList<>();
-            experiance.add("Last place");
-            experiance.add("before that");
-            return experiance;
+        public void getSectionInfo() {
+            Map<String, String> map = new TreeMap<>();
+            map.put("Компания 01", "Должность и задачи");
+            map.put("Компания 02", "Должность и задачи");
+            map.put("Компания 03", "Должность и задачи");
+            map.forEach((key, value) -> System.out.println(key + " " + value));
         }
     },
     EDUCATION("-Образование") {
         @Override
-        public ArrayList getSectionInfo() {
-            ArrayList<String> education = new ArrayList<>();
-            education.add("College");
-            education.add("School");
-            return education;
+        public void getSectionInfo() {
+            Map<String, String> map = new TreeMap<>();
+            map.put("Конференция 01", "Знания");
+            map.put("Конференция 02", "Знания");
+            map.put("Университет", "время обучения");
+            map.forEach((key, value) -> System.out.println(key + " " + value));
         }
     };
-
     private String title;
-
 
     SectionType(String title) {
         this.title = title;
@@ -53,9 +67,7 @@ public enum SectionType {
         return title;
     }
 
-    public ArrayList getSectionInfo() {
-        return null;
-    }
+    public abstract void getSectionInfo();
 
     @Override
     public String toString() {
