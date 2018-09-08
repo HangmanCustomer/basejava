@@ -59,21 +59,5 @@ public class Resume implements Comparable<Resume> {
 
     public static void main(String[] args) {
         Resume resume = new Resume("Egor");
-        System.out.println(resume.getFullName() + "\n");
-        for (Contacts cont : Contacts.values()) {
-            contacts.put(cont, cont.getValue());
-        }
-        contacts.forEach((key, value) -> System.out.println(value + " " + key.getContactInfo()));
-
-        System.out.println("\n" + "------||------" + "\n");
-
-        for (SectionType type : SectionType.values()) {
-            sectionTypes.put(type.getTitle(), type);
-        }
-        sectionTypes.forEach((key, value) -> {
-            System.out.println(key);
-            value.getSectionInfo();
-            System.out.println();
-        });
     }
 }

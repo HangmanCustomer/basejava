@@ -21,27 +21,20 @@ public class ResumeTest {
             "mail SecondName info", "linkedin SecondName info", "github SecondName info"
             , "StackOverFlow SecondName info", "Home page SecondName info")));
 
-
     @Before
     public void setUp() {
         for (ContactType contactType : ContactType.values()) {
-            resume1.getContacts().put(contactType, contactType.getRuValue());
+            resume1.getContacts().put(contactType, resume1.getContactList().get(contactType.ordinal()));
         }
-
-
         for (ContactType contactType : ContactType.values()) {
-            resume2.getContacts().put(contactType, contactType.getRuValue());
+            resume2.getContacts().put(contactType, resume2.getContactList().get(contactType.ordinal()));
         }
-
-
     }
-
 
     @Test
     public void fullName() {
         assertEquals(resume1.getFullName(), firstName);
         assertEquals(resume2.getFullName(), secondName);
-
     }
 
     @Test
@@ -49,23 +42,17 @@ public class ResumeTest {
         List<String> testArray = Arrays.asList("666-66-66", "skype FirstName info",
                 "mail FirstName info", "linkedin FirstName info", "github FirstName info"
                 , "StackOverFlow FirstName info", "Home page FirstName info");
-        resume1.getContacts().forEach((key, value) -> key.setContactInfo(resume1.getContactList()));
         List<String> checkList = new ArrayList<>();
-        resume1.getContacts().forEach((key, value) -> checkList.add(key.getContactInfo()));
+        resume1.getContacts().forEach((key, value) -> checkList.add(value));
         assertEquals(testArray, checkList);
     }
 
     @Test
     public void notSameResume() {
-        resume1.getContacts().forEach((key, value) -> key.setContactInfo(resume1.getContactList()));
         List<String> checkList1 = new ArrayList<>();
-        resume1.getContacts().forEach((key, value) -> checkList1.add(key.getContactInfo()));
-
-        resume2.getContacts().forEach((key, value) -> key.setContactInfo(resume2.getContactList()));
         List<String> checkList2 = new ArrayList<>();
-        resume2.getContacts().forEach((key, value) -> checkList2.add(key.getContactInfo()));
-
+        resume1.getContacts().forEach((key, value) -> checkList1.add(value));
+        resume2.getContacts().forEach((key, value) -> checkList2.add(value));
         assertNotEquals(checkList1, checkList2);
     }
-
 }

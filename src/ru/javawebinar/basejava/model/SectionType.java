@@ -66,12 +66,4 @@ public enum SectionType {
     public String getTitle() {
         return title;
     }
-
-    public abstract void getSectionInfo();
-
-    @Override
-    public String toString() {
-        return name();
-    }
-
 }
