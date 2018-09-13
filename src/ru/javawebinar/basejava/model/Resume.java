@@ -1,6 +1,9 @@
 package ru.javawebinar.basejava.model;
 
-import java.util.*;
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
 
 public class Resume implements Comparable<Resume> {
 
@@ -56,8 +59,15 @@ public class Resume implements Comparable<Resume> {
         return result != 0 ? result : uuid.compareTo(resume.uuid);
     }
 
-
-    public static void main(String[] args) {
-        Resume resume = new Resume("Egor");
+    public void setInfo( String phone, String skype, String mail,
+                        String linkedin, String github, String stackoverflow, String homepage) {
+        getContacts().put(ContactType.PHONE, phone);
+        getContacts().put(ContactType.SKYPE, skype);
+        getContacts().put(ContactType.MAIL, mail);
+        getContacts().put(ContactType.LINKED_IN, linkedin);
+        getContacts().put(ContactType.GITHUB, github);
+        getContacts().put(ContactType.STACK_OVER_FLOW, stackoverflow);
+        getContacts().put(ContactType.HOME_PAGE, homepage);
     }
+
 }

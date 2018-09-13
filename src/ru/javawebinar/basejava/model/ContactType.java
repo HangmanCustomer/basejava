@@ -15,10 +15,8 @@ public enum ContactType {
         this.value = value;
     }
 
-    public String getRuValue() {
+    @Override
+    public String toString() {
         return ruValue;
     }
-
-    public abstract String getContactInfo();
-
 }

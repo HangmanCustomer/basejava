@@ -1,6 +1,7 @@
+/*
 package ru.javawebinar.basejava.model;
 
-public enum TextSection {
+public enum TextSection{
 
     PERSONAL("-Личные качества"),
     OBJECTIVE("-Позиция");
@@ -14,4 +15,9 @@ public enum TextSection {
     public String getTitle() {
         return title;
     }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package ru.javawebinar.basejava.model;
 
 public enum ListSection {
@@ -15,3 +16,4 @@ public enum ListSection {
         return title;
     }
 }
+*/

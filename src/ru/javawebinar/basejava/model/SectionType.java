@@ -1,3 +1,4 @@
+/*
 package ru.javawebinar.basejava.model;
 
 import java.util.ArrayList;
@@ -66,4 +67,10 @@ public enum SectionType {
     public String getTitle() {
         return title;
     }
+
+    @Override
+    public String toString() {
+        return title;
+    }
 }
+*/
