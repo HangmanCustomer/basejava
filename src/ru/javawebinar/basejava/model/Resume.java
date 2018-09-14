@@ -1,9 +1,6 @@
 package ru.javawebinar.basejava.model;
 
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 public class Resume implements Comparable<Resume> {
 
@@ -59,15 +56,22 @@ public class Resume implements Comparable<Resume> {
         return result != 0 ? result : uuid.compareTo(resume.uuid);
     }
 
-    public void setInfo( String phone, String skype, String mail,
-                        String linkedin, String github, String stackoverflow, String homepage) {
-        getContacts().put(ContactType.PHONE, phone);
-        getContacts().put(ContactType.SKYPE, skype);
-        getContacts().put(ContactType.MAIL, mail);
-        getContacts().put(ContactType.LINKED_IN, linkedin);
-        getContacts().put(ContactType.GITHUB, github);
-        getContacts().put(ContactType.STACK_OVER_FLOW, stackoverflow);
-        getContacts().put(ContactType.HOME_PAGE, homepage);
+    public void setContact(ContactType type, String contactInfo) {
+        getContacts().put(type, contactInfo);
     }
 
+    public void setSection(SectionType type, Object sectionInfo){
+        getSectionType().put(type, sectionInfo);
+    }
+
+    public static void main(String[] args) {
+        Resume resume = new Resume("re");
+        resume.setSection(SectionType.ACHIEVEMENT, new ArrayList<String>(Arrays.asList("first achiv", "sec achiv")));
+        resume.setSection(SectionType.OBJECTIVE, "position");
+        resume.setSection(SectionType.PERSONAL, "about me");
+        resume.setSection(SectionType.QUALIFICATIONS, new ArrayList<String>(Arrays.asList("first qua", " sec qua")));
+
+        resume.getSectionType().forEach((k, v) -> System.out.println(k + " "+  v));
+
+    }
 }

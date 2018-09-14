@@ -16,6 +16,8 @@ public abstract class AbstractArrayStorage extends AbstractStorage<Integer> {
 
     protected abstract void insertElement(Resume resume, int index);
 
+    protected abstract Integer getKey(String uuid);
+
     public int size() {
         return size;
     }

@@ -1,4 +1,3 @@
-/*
 package ru.javawebinar.basejava.model;
 
 import java.util.ArrayList;
@@ -64,13 +63,10 @@ public enum SectionType {
         this.title = title;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     @Override
     public String toString() {
         return title;
     }
+
+   // abstract Object typePrint(Object o);
 }
-*/
