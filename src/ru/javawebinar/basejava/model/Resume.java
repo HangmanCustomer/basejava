@@ -26,7 +26,6 @@ public class Resume implements Comparable<Resume> {
     public String getUuid() {
         return uuid;
     }
-
     public String getFullName() {
         return fullName;
     }
@@ -83,7 +82,7 @@ public class Resume implements Comparable<Resume> {
         resume1.setSection(SectionType.EXPERIENCE, exp);
 
         System.out.println(resume1.getFullName());
-        resume1.getContacts().forEach((k,v) -> System.out.println(k + " " + v));
+        resume1.getContacts().forEach((k, v) -> System.out.println(k + " " + v));
         resume1.getSectionType().forEach((k, v) -> System.out.println(k + " " + v));
 
         Resume resume2 = new Resume("Second name");
@@ -104,11 +103,7 @@ public class Resume implements Comparable<Resume> {
 
         System.out.println();
         System.out.println(resume2.getFullName());
-        resume2.getContacts().forEach((k,v) -> System.out.println(k + " " + v));
+        resume2.getContacts().forEach((k, v) -> System.out.println(k + " " + v));
         resume2.getSectionType().forEach((k, v) -> System.out.println(k + " " + v));
-
-
     }
-
-
 }
