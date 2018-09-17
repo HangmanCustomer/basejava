@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public enum SectionType {
+    //hope it will be on a github
     PERSONAL("-Личные качества"),
     OBJECTIVE("-Позиция"),
     ACHIEVEMENT("-Достижения"),
