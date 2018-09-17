@@ -5,17 +5,12 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public enum SectionType {
-    PERSONAL("-Личные качества") {
-        @Override
-        public void getSectionInfo() {
-            System.out.println("Информация о личных качествах");
-        }
-    },
-    OBJECTIVE("-Позиция") {
-        @Override
-        public void getSectionInfo() {
-            System.out.println("занимаемая позиция");
-        }
+    PERSONAL("-Личные качества"),
+    OBJECTIVE("-Позиция"),
+    ACHIEVEMENT("-Достижения"),
+    QUALIFICATIONS("-Квалификация"),
+    EXPERIENCE("-Опыт работы"),
+    EDUCATION("-Образование");
 
     },
     ACHIEVEMENT("-Достижения") {

@@ -22,9 +22,18 @@ public class Resume implements Comparable<Resume> {
         this.fullName = fullName;
     }
 
+    public Map<ContactType, String> getContacts() {
+        return contacts;
+    }
+
+    public Map<SectionType, Object> getSectionType() {
+        return sectionType;
+    }
+
     public String getUuid() {
         return uuid;
     }
+
     public String getFullName() {
         return fullName;
     }
