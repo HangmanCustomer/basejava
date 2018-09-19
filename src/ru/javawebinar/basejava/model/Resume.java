@@ -1,15 +1,16 @@
 package ru.javawebinar.basejava.model;
 
-import java.util.*;
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
 
 public class Resume implements Comparable<Resume> {
-
     private final String uuid;
 
     private String fullName;
-//hope it will be on a github
     private Map<ContactType, String> contacts = new EnumMap<>(ContactType.class);
-    private Map<SectionType, Object> sectionType = new EnumMap<>(SectionType.class);
+    private Map<SectionType, Sections> sectionType = new EnumMap<>(SectionType.class);
 
     public Resume(String fullName) {
         this(UUID.randomUUID().toString(), fullName);
@@ -26,7 +27,7 @@ public class Resume implements Comparable<Resume> {
         return contacts;
     }
 
-    public Map<SectionType, Object> getSectionType() {
+    public Map<SectionType, Sections> getSectionType() {
         return sectionType;
     }
 
@@ -67,51 +68,8 @@ public class Resume implements Comparable<Resume> {
         getContacts().put(type, contactInfo);
     }
 
-    public void setSection(SectionType type, Object sectionInfo) {
+    public void setSection(SectionType type, Sections sectionInfo) {
         getSectionType().put(type, sectionInfo);
     }
 
-    public static void main(String[] args) {
-        Resume resume1 = new Resume("First name");
-
-        resume1.setContact(ContactType.PHONE, "777-77-77");
-        resume1.setSection(SectionType.OBJECTIVE, "position");
-        resume1.setSection(SectionType.PERSONAL, "about me");
-        resume1.setSection(SectionType.ACHIEVEMENT, new ArrayList<>(Arrays.asList("first achive", "second achive")));
-        resume1.setSection(SectionType.QUALIFICATIONS, new ArrayList<>(Arrays.asList("first qua", " sec qua")));
-
-        HashMap<String, String> edu = new HashMap<>();
-        HashMap<String, String> exp = new HashMap<>();
-        edu.put("school", "about");
-        edu.put("university", "about");
-        exp.put("first place", "about work");
-        exp.put("second place", "about work");
-        resume1.setSection(SectionType.EDUCATION, edu);
-        resume1.setSection(SectionType.EXPERIENCE, exp);
-
-        System.out.println(resume1.getFullName());
-        resume1.getContacts().forEach((k, v) -> System.out.println(k + " " + v));
-        resume1.getSectionType().forEach((k, v) -> System.out.println(k + " " + v));
-
-        Resume resume2 = new Resume("Second name");
-        resume2.setContact(ContactType.PHONE, "888-88-88");
-        resume2.setSection(SectionType.ACHIEVEMENT, new ArrayList<>(Arrays.asList("first achive", "second achive", "third achiv")));
-        resume2.setSection(SectionType.OBJECTIVE, "position");
-        resume2.setSection(SectionType.PERSONAL, "about me");
-        resume2.setSection(SectionType.QUALIFICATIONS, new ArrayList<>(Arrays.asList("first qua", " sec qua", "third qua")));
-
-        HashMap<String, String> edu2 = new HashMap<>();
-        HashMap<String, String> exp2 = new HashMap<>();
-        edu2.put("school", "about");
-        edu2.put("university", "about");
-        edu2.put("courses", "about");
-        exp2.put("first place", "about work");
-        resume2.setSection(SectionType.EDUCATION, edu2);
-        resume2.setSection(SectionType.EXPERIENCE, exp2);
-
-        System.out.println();
-        System.out.println(resume2.getFullName());
-        resume2.getContacts().forEach((k, v) -> System.out.println(k + " " + v));
-        resume2.getSectionType().forEach((k, v) -> System.out.println(k + " " + v));
-    }
 }
