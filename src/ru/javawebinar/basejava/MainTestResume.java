@@ -20,12 +20,12 @@ public class MainTestResume {
         TextSection objText = new TextSection("objective inform");
         ListSection achieveText = new ListSection(new ArrayList(Arrays.asList("first achieve", "second achieve")));
         ListSection quaText = new ListSection(new ArrayList(Arrays.asList("first qua", "second qua")));
-        Place studyFirstPlace = new Place("School", "11.11.11", "was boring");
-        Place studySecondPlace = new Place("University", "22.22.22", "was cool");
-        Place studyThirdPlace = new Place("Courses", "44.44.44", "was interesting");
+        Place studyFirstPlace = new Place("School", "11.11.11", "11.11.11", "was boring");
+        Place studySecondPlace = new Place("University", "22.22.22", "22.22.22", "was cool");
+        Place studyThirdPlace = new Place("Courses", "44.44.44", "44.44.44", "was interesting");
 
-        Place expFirstPlace = new Place("First place", "33.33.33", "knew nothing");
-        Place expSecondPlace = new Place("Second place", "44.44.44", "something new");
+        Place expFirstPlace = new Place("First place", "33.33.33", "33.33.33", "knew nothing");
+        Place expSecondPlace = new Place("Second place", "44.44.44", "44.44.44", "something new");
 
         PlaceSection studyText = new PlaceSection(new ArrayList<>(Arrays.asList(studyFirstPlace, studySecondPlace, studyThirdPlace)));
         PlaceSection expText = new PlaceSection(new ArrayList<>(Arrays.asList(expFirstPlace, expSecondPlace)));

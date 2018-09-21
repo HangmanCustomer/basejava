@@ -1,5 +1,5 @@
 package ru.javawebinar.basejava.model;
 
-public class Sections {
+public abstract class Sections {
 
 }
