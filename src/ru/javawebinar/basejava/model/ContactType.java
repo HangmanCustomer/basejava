@@ -9,14 +9,14 @@ public enum ContactType {
     STACK_OVER_FLOW("Профиль StackOverFlow:"),
     HOME_PAGE("Домашняя страница:");
 
-    private String ruValue;
+    private String title;
 
-    Contacts(String value) {
-        this.value = value;
+    ContactType(String title) {
+        this.title = title;
     }
 
     @Override
     public String toString() {
-        return ruValue;
+        return title;
     }
 }
