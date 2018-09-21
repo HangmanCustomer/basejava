@@ -23,20 +23,28 @@ public class Resume implements Comparable<Resume> {
         this.fullName = fullName;
     }
 
-    public Map<ContactType, String> getContacts() {
-        return contacts;
-    }
-
-    public Map<SectionType, Sections> getSectionType() {
-        return sectionType;
-    }
-
     public String getUuid() {
         return uuid;
     }
 
     public String getFullName() {
         return fullName;
+    }
+
+    public Map<ContactType, String> getContacts() {
+        return contacts;
+    }
+
+    public void setContact(ContactType type, String contactInfo) {
+        getContacts().put(type, contactInfo);
+    }
+
+    public Map<SectionType, Sections> getSectionType() {
+        return sectionType;
+    }
+
+    public void setSection(SectionType type, Sections sectionInfo) {
+        getSectionType().put(type, sectionInfo);
     }
 
     @Override
@@ -63,13 +71,4 @@ public class Resume implements Comparable<Resume> {
         int result = fullName.compareTo(resume.fullName);
         return result != 0 ? result : uuid.compareTo(resume.uuid);
     }
-
-    public void setContact(ContactType type, String contactInfo) {
-        getContacts().put(type, contactInfo);
-    }
-
-    public void setSection(SectionType type, Sections sectionInfo) {
-        getSectionType().put(type, sectionInfo);
-    }
-
 }
