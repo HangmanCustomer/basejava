@@ -21,6 +21,7 @@ public class MainFile {
 //        File dir = new File(dirPath);
 //        List<String> dirList = Arrays.asList(Objects.requireNonNull(dir.list()));
 //        dirList.forEach(System.out::println);
+        System.out.println(dirPath);
         listDirectory(dirPath);
     }
     private static void listDirectory(String dirPath) {
@@ -29,8 +30,8 @@ public class MainFile {
         if (dirList != null) {
             System.out.println(file.getName());
             for (String fileName : dirList) {
-                File innerFile = new File(dirPath + File.separator + fileName);
-                if (innerFile.isFile()) {
+                File innerDirectory = new File(dirPath + File.separator + fileName);
+                if (innerDirectory.isFile()) {
                     System.out.println(fileName);
                 } else {
                     listDirectory(dirPath + File.separator + fileName);
