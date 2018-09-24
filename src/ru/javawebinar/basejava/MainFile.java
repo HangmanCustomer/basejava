@@ -1,29 +1,41 @@
 package ru.javawebinar.basejava;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 
 public class MainFile {
-    public static void main(String[] args){
-        String filePath = "C:\\JavaDev\\basejava\\.gitignore";
-        File file = new File(filePath);
-
-        try {
-            System.out.println(file.getCanonicalPath());
-        } catch (IOException e) {
-            throw new  RuntimeException("Err", e);
-        }
-
-        File dir = new File("C:\\JavaDev\\basejava\\src\\ru\\javawebinar\\basejava");
-       // System.out.println(dir.isDirectory());
-//        List<String> dirList = Arrays.asList(dir.list());
+    public static void main(String[] args) {
+//        String filePath = "C:\\JavaDev\\basejava\\.gitignore";
+//        File file = new File(filePath);
+//
+//        try {
+//            System.out.println(file.getCanonicalPath());
+//        } catch (IOException e) {
+//            throw new RuntimeException("Err", e);
+//        }
+//        try(FileInputStream fis = new FileInputStream(filePath)) {
+//            System.out.println(fis.read());
+//        } catch (IOException e) {
+//            throw new RuntimeException("Err", e);
+//        }
+        String dirPath = "C:\\JavaDev\\basejava\\src\\ru\\javawebinar\\basejava";
+//        File dir = new File(dirPath);
+//        List<String> dirList = Arrays.asList(Objects.requireNonNull(dir.list()));
 //        dirList.forEach(System.out::println);
-      //  Arrays.asList(dir.list()).forEach(System.out::println);
-        try(FileInputStream fis = new FileInputStream(filePath)) {
-            System.out.println(fis.read());
-        } catch (IOException e) {
-            throw new RuntimeException("Err", e);
+        listDirectory(dirPath);
+    }
+    private static void listDirectory(String dirPath) {
+        File file = new File(dirPath);
+        String[] dirList = file.list();
+        if (dirList != null) {
+            System.out.println(file.getName());
+            for (String fileName : dirList) {
+                File innerFile = new File(dirPath + File.separator + fileName);
+                if (innerFile.isFile()) {
+                    System.out.println(fileName);
+                } else {
+                    listDirectory(dirPath + File.separator + fileName);
+                }
+            }
         }
     }
 }
