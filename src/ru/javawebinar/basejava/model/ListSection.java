@@ -7,7 +7,7 @@ public class ListSection implements Sections {
     private ArrayList<String> info;
 
     public ListSection(ArrayList<String> info) {
-        Objects.requireNonNull(info, "Section must not be null");
+        Objects.requireNonNull(info, "info must not be null");
         this.info = info;
     }
 

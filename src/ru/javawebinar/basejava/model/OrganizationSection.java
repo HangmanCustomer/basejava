@@ -11,7 +11,9 @@ public class OrganizationSection implements Sections {
         this.info = info;
     }
 
-
+    public void sameOrganization(){ //использовать хэшкод для разных периодов в организации
+        info.forEach(x -> System.out.println(x.homePage.hashCode()));
+    }
 
     @Override
     public String toString() {

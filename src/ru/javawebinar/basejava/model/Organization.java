@@ -3,7 +3,7 @@ package ru.javawebinar.basejava.model;
 import java.util.Objects;
 
 public class Organization {
-    private Link homePage;
+    protected Link homePage;
 
     private String startDate;
     private String endDate;
